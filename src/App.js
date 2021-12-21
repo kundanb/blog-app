@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import { useContext, useEffect } from 'react';
+import UserContext from './contexts/UserContext';
+import Layout from './components/layout/Layout';
+import GuestRouter from './routers/GuestRouter';
+import UserRouter from './routers/UserRouter';
 
-function App() {
+const App = () => {
+  const [user, setUser] = useContext(UserContext);
+
+  const fetchUsers = async () => {
+    const config = {
+      url: 'https://rohanpahwa71.pythonanywhere.com/blog/users/',
+      method: 'GET',
+      headers: { Authorization: 'Token ' + user.token },
+    };
+
+    try {
+      const res = await fetch(config.url, config);
+      const data = await res.json();
+
+      if (data.length === 1 && data[0].user_type === 'normal_user') {
+        setUser({ ...user, data: data[0] });
+      } else {
+        console.log(data);
+      }
+    } catch (e) {
+      console.log(e);
+      alert('Cannot fetch user details!');
+    }
+  };
+
+  useEffect(() => {
+    if (user.loggedIn) fetchUsers();
+  }, [user.loggedIn]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      {user.loggedIn ? (
+        user.data ? (
+          <UserRouter />
+        ) : (
+          <div className="pageLoader">Loading...</div>
+        )
+      ) : (
+        <GuestRouter />
+      )}
+    </Layout>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,33 @@
+.header {
+  position: sticky;
+  top: 0;
+  padding: 1em 0;
+  background: var(--color-white);
+  border-top: 3px solid var(--color-primary);
+  box-shadow: 0 0 10px -3px #0003;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 1.5em;
+}
+
+.header nav {
+  display: flex;
+}
+
+.header nav a {
+  margin-left: 2em;
+}
+.header nav a:hover,
+.header nav a.active {
+  color: var(--color-primary);
+}
+.header nav a.active {
+  font-weight: bold;
+}

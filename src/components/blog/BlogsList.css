@@ -1,0 +1,40 @@
+.blogsList {
+  margin-top: 2em;
+}
+
+.blogItem {
+  margin-top: 2em;
+  padding: 2em;
+  border-radius: 0.5em;
+  border: 1px solid #0001;
+}
+.blogItem:first-child {
+  margin-top: 0;
+}
+
+.tagItem {
+  margin-right: 1em;
+  margin-bottom: 1em;
+  color: var(--color-primary);
+  font-size: 0.7em;
+}
+.tagItem:hover,
+.tagItem:focus {
+  text-decoration: underline;
+}
+
+.blogItem h3 {
+  margin-top: 0.5em;
+}
+.blogItem h3 a:hover,
+.blogItem h3 a:focus {
+  color: var(--color-primary);
+}
+
+.blogCounts {
+  margin-top: 0.25em;
+}
+.blogCounts span {
+  margin-right: 1em;
+  font-size: 0.8em;
+}

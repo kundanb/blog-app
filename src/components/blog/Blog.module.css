@@ -1,0 +1,24 @@
+.body {
+  margin-top: 1em;
+}
+
+.counts {
+  margin-top: 1em;
+  font-size: 0.7em;
+  color: var(--color-secondary);
+}
+.count {
+  margin-right: 1em;
+}
+
+.tags {
+  margin-top: 1.5em;
+  font-size: 0.8em;
+  color: var(--color-primary);
+}
+.tag {
+  margin-right: 1em;
+}
+.tag:hover {
+  text-decoration: underline;
+}
